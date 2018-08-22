@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+		"-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+	<context id="generatorTables" targetRuntime="MyBatis3">
+
+		<plugin type="org.mybatis.generator.plugin.PaginationMysqlPlugin" />
+
+		<!--  此处是将Example改名为Criteria 当然 想改成什么都行  -->
+		<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+			<property name="searchString" value="Example"/>
+			<property name="replaceString" value="Criteria"/>
+		</plugin>
+
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+		<!-- commentGenerator 去除自动生成的注释  -->
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://114.115.218.177:3306/scarlett_test"
+			userId="root" password="8H@5DjbH">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="com.scarlett.bean.dao" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- sqlMapGenerator是mybatis 的sqlMapper XML文件的生成信息，包括生成路径等； -->
+		<sqlMapGenerator targetPackage="com.scarlett.dal.mapper" targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- javaClientGenerator是应用接口的生成信息； -->
+		<javaClientGenerator type="XMLMAPPER"
+							 targetPackage="com.scarlett.dal.mapper" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!--<table tableName="merchant_earning" domainObjectName="MerchantEarning"></table>-->
+
+		<!--<table tableName="product" mapperName="ProductMapper" domainObjectName="ProductDao" >
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>-->
+		<!--<table tableName="product_describe" mapperName="ProductDescribeMapper" domainObjectName="ProductDescribeDao" >
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+		<table tableName="admin_user" mapperName="AdminUserMapper" domainObjectName="AdminUserDao" >
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+		<table tableName="best_case" mapperName="BestCaseMapper" domainObjectName="BestCaseDao" >
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>-->
+
+		<!--<table tableName="news" mapperName="NewsMapper" domainObjectName="NewsDao" >
+			<generatedKey column="id" sqlStatement="MySql" identity="true" />
+		</table>-->
+
+		<table tableName="visit_history" mapperName="VisitHistoryMapper" domainObjectName="VisitHistoryDao" >
+			<generatedKey column="id" sqlStatement="MySql" identity="true" />
+		</table>
+
+
+	</context>
+</generatorConfiguration>  
+
